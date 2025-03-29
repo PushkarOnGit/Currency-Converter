@@ -1,1 +1,1 @@
-This is a Currency Converter App made using Flutter!
+This is a Currency Converter App made using Flutter! ✨
