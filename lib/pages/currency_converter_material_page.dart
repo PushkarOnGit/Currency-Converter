@@ -65,21 +65,24 @@ class _CurrencyConverterMaterialPageState extends State<CurrencyConverterMateria
               ),
             ),
             SizedBox(height: 12),
-            TextButton(
-              onPressed: () {
-                setState(() {
-                  result = double.parse(controller.text) * 81;
-                });
-              },
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: TextButton(
+                onPressed: () {
+                  setState(() {
+                    result = double.parse(controller.text) * 81;
+                  });
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  fixedSize: Size(390, 50),
                 ),
-                fixedSize: Size(390, 50),
+              
+                child: Text('Convert', style: TextStyle(color: Colors.black)),
               ),
-
-              child: Text('Convert', style: TextStyle(color: Colors.black)),
             ),
           ],
         ),
