@@ -1,10 +1,18 @@
 import 'package:flutter/material.dart';
 
-class CurrencyConverterPage extends StatelessWidget {
+class CurrencyConverterPage extends StatefulWidget {
   const CurrencyConverterPage({super.key});
 
   @override
+  State<CurrencyConverterPage> createState() => _CurrencyConverterPageState();
+}
+
+class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
+  @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = TextEditingController();
+    double result = 0;
+
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(30),
       borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 120, 0, 0)),
@@ -28,7 +36,7 @@ class CurrencyConverterPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              "00",
+              result.toString(),
               style: TextStyle(
                 color: Color.fromARGB(255, 120, 0, 0),
                 fontSize: 55,
@@ -37,6 +45,7 @@ class CurrencyConverterPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextField(
+                controller: controller,
                 style: TextStyle(color: Colors.green[800], fontSize: 20),
                 keyboardType: TextInputType.numberWithOptions(
                   decimal: true,
@@ -48,6 +57,29 @@ class CurrencyConverterPage extends StatelessWidget {
                   prefixIcon: Icon(Icons.attach_money),
                   prefixIconColor: Colors.green[800],
                   hintText: 'Enter Amount in USD',
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                result = double.parse(controller.text) * 81;
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: Color.fromARGB(255, 120, 0, 0),
+                ),
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                height: 58,
+                child: Center(
+                  child: Text(
+                    'Convert',
+                    style: TextStyle(
+                      color: Color.fromARGB(255, 251, 231, 190),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ),
             ),
