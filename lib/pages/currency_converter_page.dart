@@ -8,20 +8,33 @@ class CurrencyConverterPage extends StatefulWidget {
 }
 
 class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
+  final TextEditingController controller = TextEditingController();
+  double result = 0;
+
+  void convert() {
+    setState(() {
+      result =
+          double.tryParse(controller.text) != null
+              ? double.parse(controller.text) * 81
+              : 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final TextEditingController controller = TextEditingController();
-    double result = 0;
-
     final border = OutlineInputBorder(
       borderRadius: BorderRadius.circular(30),
-      borderSide: BorderSide(width: 3, color: Color.fromARGB(255, 120, 0, 0)),
+      borderSide: const BorderSide(
+        width: 3,
+        color: Color.fromARGB(255, 120, 0, 0),
+      ),
     );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Currency Converter',
           style: TextStyle(
             color: Color.fromARGB(255, 0, 48, 73),
@@ -30,14 +43,14 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
           ),
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 251, 231, 190),
+      backgroundColor: const Color.fromARGB(255, 251, 231, 190),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              result.toString(),
-              style: TextStyle(
+              result.toStringAsFixed(2),
+              style: const TextStyle(
                 color: Color.fromARGB(255, 120, 0, 0),
                 fontSize: 55,
               ),
@@ -47,31 +60,32 @@ class _CurrencyConverterPageState extends State<CurrencyConverterPage> {
               child: TextField(
                 controller: controller,
                 style: TextStyle(color: Colors.green[800], fontSize: 20),
-                keyboardType: TextInputType.numberWithOptions(
+                keyboardType: const TextInputType.numberWithOptions(
                   decimal: true,
                   signed: false,
                 ),
                 decoration: InputDecoration(
                   enabledBorder: border,
                   focusedBorder: border,
-                  prefixIcon: Icon(Icons.attach_money),
+                  prefixIcon: const Icon(Icons.attach_money),
                   prefixIconColor: Colors.green[800],
                   hintText: 'Enter Amount in USD',
                 ),
               ),
             ),
             GestureDetector(
-              onTap: () {
-                result = double.parse(controller.text) * 81;
-              },
+              onTap: convert,
               child: Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-                  color: Color.fromARGB(255, 120, 0, 0),
+                  color: const Color.fromARGB(255, 120, 0, 0),
                 ),
-                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                margin: const EdgeInsets.symmetric(
+                  vertical: 20,
+                  horizontal: 10,
+                ),
                 height: 58,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Convert',
                     style: TextStyle(
