@@ -9,6 +9,11 @@ class CurrencyConverterPage extends StatefulWidget {
 class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
   final TextEditingController _controller = TextEditingController();
   num result = 0;
+  void convert() {
+    result = double.parse(_controller.text) * 81;
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -71,10 +76,7 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
 
               //BUTTON
               GestureDetector(
-                onTap: () {
-                  result = double.parse(_controller.text) * 81;
-                  setState(() {});
-                },
+                onTap: convert,
                 child: Container(
                   height: 55,
                   width: double.infinity,
