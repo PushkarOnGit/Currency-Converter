@@ -12,13 +12,16 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
-      borderSide: BorderSide(color: Color.fromARGB(255, 120, 0, 0), width: 3.0),
+      borderSide: BorderSide(
+        color: const Color.fromARGB(255, 120, 0, 0),
+        width: 3.0,
+      ),
       borderRadius: BorderRadius.circular(10),
     );
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 235, 195),
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'Currency Converter',
           style: TextStyle(color: Color.fromARGB(255, 120, 0, 0), fontSize: 25),
         ),
@@ -33,7 +36,7 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
             children: [
               // ANSWER
               Text(
-                "$result",
+                "INR $result",
                 style: TextStyle(
                   color: Color.fromARGB(255, 120, 0, 0),
                   fontSize: 40,
@@ -41,17 +44,21 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
                 ),
               ),
 
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // INPUT
               TextField(
                 style: TextStyle(fontSize: 25),
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType: const TextInputType.numberWithOptions(
+                  decimal: true,
+                ),
                 textAlign: TextAlign.center,
                 decoration: InputDecoration(
                   hintText: 'Enter Amount in USD',
-                  hintStyle: TextStyle(color: Color.fromARGB(255, 120, 0, 0)),
-                  contentPadding: EdgeInsets.symmetric(
+                  hintStyle: const TextStyle(
+                    color: Color.fromARGB(255, 120, 0, 0),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(
                     horizontal: 10,
                     vertical: 10,
                   ),
@@ -60,7 +67,7 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
                 ),
                 controller: _controller,
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               //BUTTON
               GestureDetector(
@@ -73,9 +80,9 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(255, 120, 0, 0),
+                    color: const Color.fromARGB(255, 120, 0, 0),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Convert',
                       style: TextStyle(
