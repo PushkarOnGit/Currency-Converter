@@ -16,6 +16,12 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
   }
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
       borderSide: BorderSide(
