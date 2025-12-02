@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 
 class CurrencyConverterPage extends StatelessWidget {
-  const CurrencyConverterPage({super.key});
-
+  CurrencyConverterPage({super.key});
+  final TextEditingController _controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    num result = 0.0;
     final border = OutlineInputBorder(
       borderSide: BorderSide(color: Color.fromARGB(255, 120, 0, 0), width: 3.0),
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(10),
     );
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 255, 235, 195),
+      appBar: AppBar(
+        title: Text(
+          'Currency Converter',
+          style: TextStyle(color: Color.fromARGB(255, 120, 0, 0), fontSize: 25),
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
@@ -19,7 +28,7 @@ class CurrencyConverterPage extends StatelessWidget {
             children: [
               // ANSWER
               Text(
-                '000',
+                "$result",
                 style: TextStyle(
                   color: Color.fromARGB(255, 120, 0, 0),
                   fontSize: 40,
@@ -44,12 +53,15 @@ class CurrencyConverterPage extends StatelessWidget {
                   focusedBorder: border,
                   enabledBorder: border,
                 ),
+                controller: _controller,
               ),
               SizedBox(height: 20),
 
               //BUTTON
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  result = double.parse(_controller.text) * 81;
+                },
                 child: Container(
                   height: 55,
                   width: double.infinity,
