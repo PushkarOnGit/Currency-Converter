@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
-class CurrencyConverterPage extends StatelessWidget {
-  CurrencyConverterPage({super.key});
+class CurrencyConverterPage extends StatefulWidget {
+  const CurrencyConverterPage({super.key});
+  @override
+  State<CurrencyConverterPage> createState() => _CurrencyControllerPageState();
+}
+
+class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
   final TextEditingController _controller = TextEditingController();
+  num result = 0;
   @override
   Widget build(BuildContext context) {
-    num result = 0.0;
     final border = OutlineInputBorder(
       borderSide: BorderSide(color: Color.fromARGB(255, 120, 0, 0), width: 3.0),
       borderRadius: BorderRadius.circular(10),
@@ -61,6 +66,7 @@ class CurrencyConverterPage extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   result = double.parse(_controller.text) * 81;
+                  setState(() {});
                 },
                 child: Container(
                   height: 55,
