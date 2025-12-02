@@ -11,6 +11,7 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
   num result = 0;
   void convert() {
     result = double.parse(_controller.text) * 81;
+    _controller.clear();
     setState(() {});
   }
 
@@ -41,7 +42,7 @@ class _CurrencyControllerPageState extends State<CurrencyConverterPage> {
             children: [
               // ANSWER
               Text(
-                "INR $result",
+                "INR ${result.toStringAsFixed(2)}",
                 style: TextStyle(
                   color: Color.fromARGB(255, 120, 0, 0),
                   fontSize: 40,
